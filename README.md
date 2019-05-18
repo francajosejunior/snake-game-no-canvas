@@ -1,32 +1,3 @@
-# React-boilerplate
+# React-Snake-Game
 
-Configuration to create a react-project on scratch.
-
-## Installation
-
-```
-npm i
-
-```
-
-## Run
-
-```
-npm start
-```
-
-Se houverem erros no 'node-sass/vendo'
-
-```
-npm rebuild node-sass
-```
-
-## Test
-
-```
-npm test
-```
-
-```
-npm test:watch
-```
+Snake-game with react, redux, duck pattern and css. No canvas.
