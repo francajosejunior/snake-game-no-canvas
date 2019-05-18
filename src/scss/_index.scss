@@ -1,0 +1,106 @@
+@import "./variables";
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  box-sizing: border-box;
+  .app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background;
+
+    .area {
+      background-color: $area;
+      width: 100px;
+      height: 50px;
+      zoom: 10;
+      position: relative;
+      &::before {
+        content: " ";
+      }
+
+      .snake {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background-color: $snake;
+        // transition: top ease-in-out 0.025s, left ease-in-out 0.025s;
+      }
+
+      &.pause {
+        .snake {
+          animation: my-animation 1.5s infinite;
+        }
+      }
+
+      &.gameover {
+        .snake {
+          animation: game-over-animation 2s forwards;
+          transform-origin: left;
+        }
+      }
+
+      .food {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background-color: $food;
+        animation: my-animation 1s infinite;
+      }
+      .score {
+        position: absolute;
+        bottom: -1px;
+        right: 1px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: $score;
+        opacity: 0.5;
+        font-size: 0.6em;
+      }
+
+      .help {
+        position: absolute;
+        bottom: -3px;
+        left: 1px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: $help;
+        font-size: 0.15em;
+      }
+    }
+  }
+}
+
+@keyframes my-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes game-over-animation {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    transform-origin: left;
+  }
+  50% {
+    transform: translateX(50%);
+    filter: blur(0.25px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+    filter: blur(0.5px);
+  }
+}
